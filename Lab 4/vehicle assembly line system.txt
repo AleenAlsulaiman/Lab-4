@@ -1,0 +1,64 @@
+// Product Interface
+public interface Vehicle {
+    void assemble();
+}
+
+// Concrete Products
+class Car implements Vehicle {
+    public void assemble() {
+        System.out.println("Assembling a Car with 4 doors and a gasoline engine.");
+    }
+}
+
+class Truck implements Vehicle {
+    public void assemble() {
+        System.out.println("Assembling a Truck with large cargo capacity and diesel engine.");
+    }
+}
+
+class Motorcycle implements Vehicle {
+    public void assemble() {
+        System.out.println("Assembling a Motorcycle with 2 wheels and a compact engine.");
+    }
+}
+
+// Factory Interface
+interface VehicleFactory {
+    Vehicle createVehicle();
+}
+
+// Concrete Factories
+class CarFactory implements VehicleFactory {
+    public Vehicle createVehicle() {
+        return new Car();
+    }
+}
+
+class TruckFactory implements VehicleFactory {
+    public Vehicle createVehicle() {
+        return new Truck();
+    }
+}
+
+class MotorcycleFactory implements VehicleFactory {
+    public Vehicle createVehicle() {
+        return new Motorcycle();
+    }
+}
+
+// Usage Example
+public class VehicleAssembly {
+    public static void main(String[] args) {
+        VehicleFactory carFactory = new CarFactory();
+        Vehicle car = carFactory.createVehicle();
+        car.assemble();
+
+        VehicleFactory truckFactory = new TruckFactory();
+        Vehicle truck = truckFactory.createVehicle();
+        truck.assemble();
+
+        VehicleFactory motorcycleFactory = new MotorcycleFactory();
+        Vehicle motorcycle = motorcycleFactory.createVehicle();
+        motorcycle.assemble();
+    }
+}

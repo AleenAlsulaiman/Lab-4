@@ -1,0 +1,68 @@
+// Product: Meal
+public class Meal {
+    private String appetizer;
+    private String mainCourse;
+    private String sideDish;
+    private String dessert;
+
+    private Meal() {} // Private constructor
+
+    // Getters
+    public String getAppetizer() { return appetizer; }
+    public String getMainCourse() { return mainCourse; }
+    public String getSideDish() { return sideDish; }
+    public String getDessert() { return dessert; }
+
+    // Builder class
+    public static class MealBuilder {
+        private Meal meal;
+
+        public MealBuilder() {
+            meal = new Meal();
+        }
+
+        public MealBuilder setAppetizer(String appetizer) {
+            meal.appetizer = appetizer;
+            return this;
+        }
+
+        public MealBuilder setMainCourse(String mainCourse) {
+            meal.mainCourse = mainCourse;
+            return this;
+        }
+
+        public MealBuilder setSideDish(String sideDish) {
+            meal.sideDish = sideDish;
+            return this;
+        }
+
+        public MealBuilder setDessert(String dessert) {
+            meal.dessert = dessert;
+            return this;
+        }
+
+        public Meal build() {
+            return meal;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Meal [Appetizer=" + appetizer + ", Main Course=" + mainCourse +
+               ", Side Dish=" + sideDish + ", Dessert=" + dessert + "]";
+    }
+}
+
+// Usage Example
+public class MealCustomization {
+    public static void main(String[] args) {
+        Meal myMeal = new Meal.MealBuilder()
+                .setAppetizer("Caesar Salad")
+                .setMainCourse("Grilled Chicken")
+                .setSideDish("Mashed Potatoes")
+                .setDessert("Chocolate Cake")
+                .build();
+
+        System.out.println(myMeal);
+    }
+}
